@@ -1,0 +1,55 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guess the Number Game</h1>
+  <p>Guess a number between 1 and 100</p>
+  <input type="number" id="guess" placeholder="Enter your guess" />
+  <button onclick="submitGuess()">Submit Guess</button>
+  <p id="feedback"></p>
+
+  <script>
+    let secretNumber;
+
+    // Fetch the secret number from the server
+    fetch('/game')
+      .then(response => response.json())
+      .then(data => {
+        secretNumber = data.secretNumber;
+        console.log('Secret Number:', secretNumber);  // For testing purposes
+      });
+
+    function submitGuess() {
+      const guess = document.getElementById('guess').value;
+      if (guess) {
+        if (parseInt(guess) === secretNumber) {
+          document.getElementById('feedback').innerText = 'Congratulations! You guessed the correct number!';
+        } else if (parseInt(guess) < secretNumber) {
+          document.getElementById('feedback').innerText = 'Too low! Try again.';
+        } else {
+          document.getElementById('feedback').innerText = 'Too high! Try again.';
+        }
+      } else {
+        document.getElementById('feedback').innerText = 'Please enter a valid number.';
+      }
+    }
+  </script>
+</body>
+</html>
