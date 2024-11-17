@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app
+  labels:
+    app: node-app
+  namespace: node-app
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+spec:
+  type: ClusterIP
+  selector:
+    app: node-app
+  ports:
+   -  protocol: TCP
+      name: node-app
+      port: 80
+      targetPort: 5000
