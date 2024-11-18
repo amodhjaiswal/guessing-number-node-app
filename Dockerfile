@@ -13,6 +13,10 @@ RUN npm install
 # Copy the rest of the application files to the container
 COPY . .
 
+# Set environment variable for New Relic
+ENV NEW_RELIC_LICENSE_KEY=eu01xxd779cc580faa7d4c15b8367906FFFFNRAL
+ENV NEW_RELIC_APP_NAME=node
+
 # Expose port 5000 to the host
 EXPOSE 5000
 
