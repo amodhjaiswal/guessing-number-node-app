@@ -20,4 +20,7 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
-        # Add more environment variables if needed (e.g., DB credentials)
+        - name: NEW_RELIC_LICENSE_KEY
+          value: "eu01xxd779cc580faa7d4c15b8367906FFFFNRAL"
+        - name: NEW_RELIC_APP_NAME
+          value: "node"
