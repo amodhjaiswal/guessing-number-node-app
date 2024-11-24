@@ -24,3 +24,11 @@ spec:
           value: "eu01xxd779cc580faa7d4c15b8367906FFFFNRAL"
         - name: NEW_RELIC_APP_NAME
           value: "node"
+        resources:
+          limits:
+            cpu: "50m"
+            memory: "150Mi"
+          requests:
+            cpu: "50m"
+            memory: "150Mi"
+
