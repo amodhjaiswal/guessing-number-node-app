@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: node-app
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 5000
